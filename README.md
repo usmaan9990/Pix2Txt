@@ -22,7 +22,7 @@ Pix2Txt is a simple web application that allows users to upload an image and ext
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript
+- **Frontend**: HTML, CSS
 - **Backend**: Python, Flask
 - **OCR Engine**: Mistral OCR
 
