@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript">
+    function previewImage(event) {
+      var input = event.target;
+      var image = document.getElementById('preview');
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          image.src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Image 2 Text</title>
+</head>
+<body>
+  <div id="container">
+    <h1>Pix2Txt</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+      <input type="file" id="U_file" name="U_file" accept="image/*" onchange="previewImage(event)">
+      <input type="submit" value="Upload"><br>
+      <img id="preview" src="{{ image_path }}" alt="Preview Image">
+    </form>
+
+    {% if text %}
+      <h2>Extracted Text:</h2>
+      <pre>{{ text }}</pre>
+    {% endif %}
+  </div>
+</body>
+</html>
